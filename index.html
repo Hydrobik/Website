@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vulnerable Web Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .hidden {
+            display: none;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="login-section">
+            <h2>Login</h2>
+            <form id="login-form" method="POST" action="/login">
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div>
+                    <button type="submit">Login</button>
+                </div>
+            </form>
+            <div id="error-message" class="error hidden"></div>
+        </div>
+
+        <div id="data-section" class="hidden">
+            <h2>Data</h2>
+            <div id="data-info"></div>
+        </div>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('login-form');
+        const loginSection = document.getElementById('login-section');
+        const dataSection = document.getElementById('data-section');
+        const dataInfo = document.getElementById('data-info');
+        const errorMessage = document.getElementById('error-message');
+
+        loginForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Simulate a SQL Injection vulnerability
+            if (username === 'admin' && password === "' OR '1'='1") {
+                loginSection.classList.add('hidden');
+                dataSection.classList.remove('hidden');
+                displayData();
+            } else {
+                errorMessage.textContent = 'Invalid username or password';
+                errorMessage.classList.remove('hidden');
+            }
+        });
+
+        function displayData() {
+            // Simulate sensitive data exposure
+            const data = {
+                users: [
+                    { name: 'John Doe', password: 'password123' },
+                    { name: 'Jane Smith', password: 'mypassword' }
+                ],
+                config: {
+                    apiKey: '1234567890abcdef',
+                    secretKey: 'abcdef1234567890'
+                }
+            };
+
+            let html = '<h3>Users</h3>';
+            html += '<ul>';
+            data.users.forEach(user => {
+                html += `<li>${user.name} - Password: ${user.password}</li>`;
+            });
+            html += '</ul>';
+
+            html += '<h3>Config</h3>';
+            html += `<p>API Key: ${data.config.apiKey}</p>`;
+            html += `<p>Secret Key: ${data.config.secretKey}</p>`;
+
+            dataInfo.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
