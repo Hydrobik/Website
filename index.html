@@ -13,19 +13,19 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f5f5f5;
+            background-color: #181f83;
         }
         .container {
-            background-color: white;
+            background-color: rgb(191, 90, 90);
             padding: 20px;
             border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(208, 190, 33, 0.1);
         }
         .hidden {
             display: none;
         }
         .error {
-            color: red;
+            color: rgb(42, 214, 200);
         }
     </style>
 </head>
@@ -49,17 +49,16 @@
             <div id="error-message" class="error hidden"></div>
         </div>
 
-        <div id="data-section" class="hidden">
-            <h2>Data</h2>
-            <div id="data-info"></div>
+        <div id="flag-section" class="hidden">
+            <h2>Congratulations!</h2>
+            <p>Your flag is: <code>FLAG{you_found_the_vulnerability}</code></p>
         </div>
     </div>
 
     <script>
         const loginForm = document.getElementById('login-form');
         const loginSection = document.getElementById('login-section');
-        const dataSection = document.getElementById('data-section');
-        const dataInfo = document.getElementById('data-info');
+        const flagSection = document.getElementById('flag-section');
         const errorMessage = document.getElementById('error-message');
 
         loginForm.addEventListener('submit', (event) => {
@@ -71,40 +70,12 @@
             // Simulate a SQL Injection vulnerability
             if (username === 'admin' && password === "' OR '1'='1") {
                 loginSection.classList.add('hidden');
-                dataSection.classList.remove('hidden');
-                displayData();
+                flagSection.classList.remove('hidden');
             } else {
                 errorMessage.textContent = 'Invalid username or password';
                 errorMessage.classList.remove('hidden');
             }
         });
-
-        function displayData() {
-            // Simulate sensitive data exposure
-            const data = {
-                users: [
-                    { name: 'John Doe', password: 'password123' },
-                    { name: 'Jane Smith', password: 'mypassword' }
-                ],
-                config: {
-                    apiKey: '1234567890abcdef',
-                    secretKey: 'abcdef1234567890'
-                }
-            };
-
-            let html = '<h3>Users</h3>';
-            html += '<ul>';
-            data.users.forEach(user => {
-                html += `<li>${user.name} - Password: ${user.password}</li>`;
-            });
-            html += '</ul>';
-
-            html += '<h3>Config</h3>';
-            html += `<p>API Key: ${data.config.apiKey}</p>`;
-            html += `<p>Secret Key: ${data.config.secretKey}</p>`;
-
-            dataInfo.innerHTML = html;
-        }
     </script>
 </body>
 </html>
