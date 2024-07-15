@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 4 - Reflected XSS with Input Sanitization</title>
+    <script>
+        function sanitizeHTML(str) {
+            return str.replace(/[<>"'\/]/g, '');
+        }
+
+        function displayMessage() {
+            const params = new URLSearchParams(window.location.search);
+            const message = params.get('message');
+            const sanitizedMessage = sanitizeHTML(message);
+            document.getElementById('output').textContent = sanitizedMessage;
+        }
+    </script>
+</head>
+<body onload="displayMessage()">
+    <h2>Level 4 - Reflected XSS with Input Sanitization</h2>
+    <div id="output"></div>
+</body>
+</html>
