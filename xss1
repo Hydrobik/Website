@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 1 - Basic Reflected XSS</title>
+</head>
+<body>
+    <h2>Level 1 - Basic Reflected XSS</h2>
+    <p>Welcome to the vulnerable page!</p>
+    <form>
+        <label for="name">Enter your name:</label>
+        <input type="text" id="name" name="name">
+        <button type="submit">Submit</button>
+    </form>
+    <div id="output"></div>
+
+    <script>
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            document.getElementById('output').innerHTML = `<p>Hello, ${name}!</p>`;
+        });
+    </script>
+</body>
+</html>
