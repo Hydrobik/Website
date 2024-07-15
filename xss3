@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 3 - DOM-based XSS</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const message = params.get('message');
+            document.getElementById('output').textContent = message;
+        });
+    </script>
+</head>
+<body>
+    <h2>Level 3 - DOM-based XSS</h2>
+    <div id="output"></div>
+</body>
+</html>
