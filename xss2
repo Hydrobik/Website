@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 2 - Stored XSS</title>
+</head>
+<body>
+    <h2>Level 2 - Stored XSS</h2>
+    <p>Leave a comment:</p>
+    <form id="comment-form">
+        <label for="comment">Your comment:</label><br>
+        <textarea id="comment" name="comment" rows="4" cols="50"></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="comments">
+        <!-- Comments will be displayed here -->
+    </div>
+
+    <script>
+        const commentForm = document.getElementById('comment-form');
+        const commentsSection = document.getElementById('comments');
+
+        commentForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const comment = document.getElementById('comment').value;
+            const newComment = document.createElement('p');
+            newComment.textContent = comment;
+            commentsSection.appendChild(newComment);
+        });
+    </script>
+</body>
+</html>
