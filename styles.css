@@ -96,7 +96,7 @@ footer {
 .certifications, .achievements, .introduction, .experience, .achievements, .education { /* Add .education to elements with neon glow */
   margin: 20px 0;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.5); /* Adjust opacity if text is hidden */
+  background: rgba(0, 0, 0, 0.1); /* Adjust opacity if text is hidden */
   border-radius: 10px;
   width: 100%;
   box-shadow:
@@ -106,7 +106,7 @@ footer {
 }
 
 .certifications h2, .achievements h2, .introduction h2, .experience h2, .achievements h2, .education h2 { /* Add .education to elements with neon glow */
-  color: #ffffff;
+  color: #572ba9;
 }
 
 .certifications p, .achievements p, .introduction p, .experience p, .achievements p, .education p { /* Add .education to elements with neon glow */
