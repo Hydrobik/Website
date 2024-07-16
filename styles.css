@@ -32,7 +32,6 @@ main {
   justify-content: center;
   padding: 20px;
   margin: 20px auto;
-  background: rgba(0, 0, 0, 0.5); /* Adjust opacity for less transparency */
   border-radius: 10px;
   max-width: 800px;
 }
