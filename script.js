@@ -9,7 +9,6 @@ function login() {
         // Set session
         sessionStorage.setItem("isLoggedIn", "true");
         sessionStorage.setItem("username", username);
-        alert("Login successful!");
         window.location.href = "profile.html";
     } else {
         alert("Invalid username or password!");
