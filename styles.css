@@ -5,12 +5,15 @@ body {
     color: #ffffff;
     margin: 0;
     padding: 0;
+    background-image: url('src/cyberpunk-background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 header {
     text-align: center;
     padding: 50px;
-    background: #1a1a1a;
+    background: rgba(0, 0, 0, 0.8);
     color: #ff00ff;
     text-shadow: 0 0 10px #ff00ff;
 }
@@ -21,6 +24,9 @@ main {
     align-items: center;
     justify-content: center;
     padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    margin: 20px;
 }
 
 form {
@@ -70,7 +76,7 @@ button:hover {
 footer {
     text-align: center;
     padding: 20px;
-    background: #1a1a1a;
+    background: rgba(0, 0, 0, 0.8);
     color: #ff00ff;
 }
 
@@ -78,7 +84,7 @@ footer {
 .experience, .achievements {
     margin: 20px 0;
     padding: 20px;
-    background: #1a1a1a;
+    background: rgba(0, 0, 0, 0.7);
     border-radius: 10px;
     width: 80%;
     max-width: 800px;
@@ -89,26 +95,11 @@ h2 {
     text-shadow: 0 0 10px #ff00ff;
 }
 
-button {
-    padding: 12px 20px;
-    background-color: #ff00ff;
-    color: #0d0d0d;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    margin-top: 20px;
-}
-
-button:hover {
-    background-color: #00ff99;
-    color: #0d0d0d;
-}
 /* Additional styles for the challenge page */
 .introduction, .challenges {
     margin: 20px 0;
     padding: 20px;
-    background: #1a1a1a;
+    background: rgba(0, 0, 0, 0.7);
     border-radius: 10px;
     width: 80%;
     max-width: 800px;
@@ -137,4 +128,3 @@ a {
 a:hover {
     text-decoration: underline;
 }
-
