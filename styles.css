@@ -1,144 +1,138 @@
 /* Base styles for the entire site */
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #121212;
-    color: #e0e0e0;
-    margin: 0;
-    padding: 0;
-    background-image: url('src/cyberpunk-background.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+  font-family: 'Roboto', sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
+  margin: 0;
+  padding: 0;
+  background-image: url('src/cyberpunk-background.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 header {
-    text-align: center;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.8);
-    color: #ff77ff;
-    border-bottom: 1px solid #ff77ff;
+  text-align: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5); /* Adjust opacity for less transparency */
+  color: #ff77ff;
+  border: none;
 }
 
 header h1 {
-    margin: 0;
-    font-size: 2.5em;
-    font-weight: bold;
+  margin: 0;
+  font-size: 2.5em;
+  font-weight: bold;
 }
 
 main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    margin: 20px auto;
-    background: rgba(0, 0, 0, 0.8);
-    border-radius: 10px;
-    max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin: 20px auto;
+  background: rgba(0, 0, 0, 0.5); /* Adjust opacity for less transparency */
+  border-radius: 10px;
+  max-width: 800px;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
 }
 
 label, input, .hint, button {
-    margin-bottom: 15px;
-    width: 100%;
+  margin-bottom: 15px;
+  width: 100%;
 }
 
 label {
-    font-size: 1.1em;
-    color: #ff77ff;
+  font-size: 1.1em;
+  color: #ff77ff;
 }
 
 input {
-    padding: 10px;
-    font-size: 1em;
-    border: 2px solid #ff77ff;
-    border-radius: 5px;
-    background-color: #333;
-    color: #e0e0e0;
+  padding: 10px;
+  font-size: 1em;
+  border: 0; /* Remove border */
+  border-radius: 5px;
+  background-color: #333;
+  color: #e0e0e0;
 }
 
 .hint {
-    font-size: 0.9em;
-    color: #00cc66;
+  font-size: 0.9em;
+  color: #00cc66;
 }
 
 button {
-    padding: 12px 20px;
-    background-color: #ff77ff;
-    color: #121212;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s, color 0.3s;
+  padding: 12px 20px;
+  background-color: #ff77ff;
+  color: #121212;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 button:hover {
-    background-color: #00cc66;
-    color: #121212;
+  background-color: #00cc66;
+  color: #121212;
 }
 
 footer {
-    text-align: center;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.8);
-    color: #ff77ff;
-    border-top: 1px solid #ff77ff;
+  text-align: center;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.5); /* Adjust opacity for less transparency */
+  color: #ff77ff;
+  border: none;
 }
 
 /* Additional styles for the profile page */
 .experience, .achievements {
-    margin: 20px 0;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.8);
-    border-radius: 10px;
-    width: 100%;
+  margin: 20px 0;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  width: 100%;
 }
 
 .experience h2, .achievements h2 {
-    color: #ff77ff;
+  color: #ff77ff;
 }
 
 .experience p, .achievements p {
-    font-size: 1em;
-    line-height: 1.6;
+  font-size: 1em;
+  line-height: 1.6;
 }
 
 /* Additional styles for the challenge page */
 .introduction, .challenges {
-    margin: 20px 0;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.8);
-    border-radius: 10px;
-    width: 100%;
+  margin: 20px 0;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  width: 100%;
 }
 
 .introduction h2, .challenges h2 {
-    color: #ff77ff;
+  color: #ff77ff;
 }
 
 ul {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 li {
-    margin: 10px 0;
+  margin: 10px 0;
 }
 
 a {
-    color: #00cc66;
-    text-decoration: none;
-    font-size: 1.1em;
-    transition: color 0.3s;
-}
-
-a:hover {
-    color: #ff77ff;
-}
+  color: #00cc66;
+  text-decoration: none;
+  
