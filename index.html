@@ -3,69 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #43416e;
-        }
-        .container {
-            background-color: rgb(53, 104, 77);
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(143, 44, 44, 0.1);
-        }
-        .hidden {
-            display: none;
-        }
-        .error {
-            color: red;
-        }
-    </style>
+    <title>Welcome to Hydrobikz World!</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div id="login-section">
-            <h2>Login</h2>
-            <form id="login-form" method="POST" action="/login">
-                <div>
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div>
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <div>
-                    <button type="submit">Login</button>
-                </div>
-            </form>
-            <div id="error-message" class="error hidden"></div>
-        </div>
-    </div>
+    <header>
+        <h1>Welcome to Hydrobikz World!</h1>
+    </header>
+    <main>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            <p class="hint">Hint: Think like a hacker</p>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            <p class="hint">Hint: What's the first thing you try?</p>
+
+            <button type="submit">Login</button>
+        </form>
+    </main>
+    <footer>
+        <!-- Optional: Footer navigation links -->
+    </footer>
 
     <script>
-        const loginForm = document.getElementById('login-form');
-        const errorMessage = document.getElementById('error-message');
-
-        loginForm.addEventListener('submit', async (event) => {
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault();
-
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            // Check for default credentials
-            if (username === 'admin' && password === 'password123') {
-                window.location.replace('/dashboard.html');
+            if (username === 'admin' && password === 'admin') {
+                alert('Login successful!');
+                // Redirect to profile page (update the URL to your profile page)
+                window.location.href = 'profile.html';
             } else {
-                errorMessage.textContent = 'Invalid username or password';
-                errorMessage.classList.remove('hidden');
+                alert('Incorrect username or password. Please try again.');
             }
         });
     </script>
