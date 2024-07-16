@@ -50,7 +50,7 @@
             <input type="password" id="password" name="password" placeholder="Enter your password" required>
             <p class="hint">Hint: What's the first thing you try?</p>
 
-            <button type="submit">Login</button>
+            <button onclick="login()">Login</button>
             <p id="loginError" class="error"></p>
         </form>
         <footer>
@@ -58,20 +58,6 @@
             <p>Disclaimer: If you think guessing the password is hacking, you're in for a wild ride!</p>
         </footer>
     </main>
-
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            if (username === 'admin' && password === 'admin') {
-                // Redirect to profile page (update the URL to your profile page)
-                window.location.href = 'profile.html';
-            } else {
-                document.getElementById('loginError').textContent = 'Incorrect username or password. Please try again.';
-            }
-        });
-    </script>
+     <script src="script.js"></script>
 </body>
 </html>
