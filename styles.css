@@ -8,12 +8,13 @@ body {
     background-image: url('src/cyberpunk-background.jpg');
     background-size: cover;
     background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 header {
     text-align: center;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.8);
     color: #ff77ff;
     border-bottom: 1px solid #ff77ff;
 }
@@ -30,11 +31,10 @@ main {
     align-items: center;
     justify-content: center;
     padding: 20px;
-    margin: 20px;
-    background: rgba(0, 0, 0, 0.85);
+    margin: 20px auto;
+    background: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     max-width: 800px;
-    margin: 20px auto;
 }
 
 form {
@@ -87,7 +87,7 @@ button:hover {
 footer {
     text-align: center;
     padding: 10px;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.8);
     color: #ff77ff;
     border-top: 1px solid #ff77ff;
 }
@@ -96,7 +96,7 @@ footer {
 .experience, .achievements {
     margin: 20px 0;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     width: 100%;
 }
@@ -114,7 +114,7 @@ footer {
 .introduction, .challenges {
     margin: 20px 0;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     width: 100%;
 }
