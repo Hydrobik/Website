@@ -14,7 +14,6 @@ body {
 header {
   text-align: center;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.5); /* Adjust opacity for less transparency */
   color: #ff77ff;
   border: none;
 }
