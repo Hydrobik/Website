@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="5;url=/index.html">
+    <title>Bikash Not Found</title>
+</head>
+<body>
+    <h1>Bikash Not Found</h1>
+    <p>Redirecting you to the homepage...</p>
+    <script type="text/javascript">
+        var path = window.location.pathname;
+        if (path.endsWith('/')) {
+            path += 'index.html';
+        } else {
+            path += '.html';
+        }
+        window.location.replace(path);
+    </script>
+</body>
+</html>
