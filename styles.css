@@ -104,3 +104,37 @@ button:hover {
     background-color: #00ff99;
     color: #0d0d0d;
 }
+/* Additional styles for the challenge page */
+.introduction, .challenges {
+    margin: 20px 0;
+    padding: 20px;
+    background: #1a1a1a;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 800px;
+}
+
+.introduction h2, .challenges h2 {
+    color: #ff00ff;
+    text-shadow: 0 0 10px #ff00ff;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+}
+
+a {
+    color: #00ff99;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
