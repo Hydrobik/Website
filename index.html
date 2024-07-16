@@ -5,6 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Hydrobikz World!</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 100%;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #ff77ff;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -21,11 +51,13 @@
             <p class="hint">Hint: What's the first thing you try?</p>
 
             <button type="submit">Login</button>
+            <p id="loginError" class="error"></p>
         </form>
+        <footer>
+            <p>&copy; 2024 Bikash Kumar Prasad. All rights reserved.</p>
+            <p>Disclaimer: If you think guessing the password is hacking, you're in for a wild ride!</p>
+        </footer>
     </main>
-    <footer>
-        <!-- Optional: Footer navigation links -->
-    </footer>
 
     <script>
         document.getElementById('loginForm').addEventListener('submit', function(event) {
@@ -34,11 +66,10 @@
             const password = document.getElementById('password').value;
 
             if (username === 'admin' && password === 'admin') {
-                alert('Login successful!');
                 // Redirect to profile page (update the URL to your profile page)
                 window.location.href = 'profile.html';
             } else {
-                alert('Incorrect username or password. Please try again.');
+                document.getElementById('loginError').textContent = 'Incorrect username or password. Please try again.';
             }
         });
     </script>
