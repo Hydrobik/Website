@@ -111,3 +111,15 @@ footer {
   font-size: 1em;
   line-height: 1.6;
 }
+
+.challenges ul li a {
+  color: #d651ff; /* Apply the cyberpunk color to the challenge links */
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.challenges ul li a:hover {
+  color: #ff77ff; /* Optional: Add hover effect to change color */
+  text-decoration: underline;
+}
