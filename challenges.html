@@ -1,38 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Your Skills</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/src/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/src/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/src/favicon-16x16.png">
     <link rel="manifest" href="/src/site.webmanifest">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Your Skills</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="cyberpunk-theme">
     <header>
         <h1>Test Your Skills</h1>
     </header>
     <main>
         <section class="introduction">
             <h2>Welcome to the Challenge Page!</h2>
-            <p>Here you can test your skills with different vulnerability challenges. Each challenge comes with an explanation and instructions on how to exploit it. Happy hacking!</p>
+            <p>Test your skills with various vulnerability challenges. Each challenge includes an explanation and instructions. Good luck, and happy hacking!</p>
         </section>
+
         <section class="challenges">
             <h2>Challenges</h2>
             <ul>
+                <!-- XSS Challenges -->
                 <li><a href="xss1.html">Level 1: Basic Reflected XSS</a></li>
                 <li><a href="xss2.html">Level 2: Stored XSS</a></li>
                 <li><a href="xss3.html">Level 3: DOM-based XSS</a></li>
                 <li><a href="xss4.html">Level 4: Reflected XSS with Input Sanitization</a></li>
                 <li><a href="xss5.html">Level 5: Advanced XSS Protection with Content Security Policy (CSP)</a></li>
+
+                <!-- SQL Injection Challenges -->
                 <li><a href="sqli-level1.html">SQL Injection Challenge Level 1: Basic SQLi</a></li>
                 <li><a href="sqli-level2.html">SQL Injection Challenge Level 2: Intermediate SQLi</a></li>
                 <li><a href="sqli-level3.html">SQL Injection Challenge Level 3: Advanced SQLi</a></li>
+
+                <!-- Additional OWASP Top 10 Challenges -->
+                <li><a href="broken-authentication.html">Broken Authentication</a></li>
+                <li><a href="insecure-deserialization.html">Insecure Deserialization</a></li>
+                <li><a href="sensitive-data-exposure.html">Sensitive Data Exposure</a></li>
+                <li><a href="xml-external-entities.html">XML External Entities (XXE)</a></li>
+                <li><a href="security-misconfiguration.html">Security Misconfiguration</a></li>
             </ul>
         </section>
     </main>
+
     <footer>
         <!-- Optional: Footer navigation links -->
     </footer>
