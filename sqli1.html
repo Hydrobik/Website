@@ -3,57 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SQL Injection Challenge Level 1: Basic SQLi</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Level 1 - Basic SQL Injection</title>
 </head>
-<body class="cyberpunk-theme">
-    <header>
-        <h1>SQL Injection Challenge Level 1: Basic SQLi</h1>
-    </header>
-    <main>
-        <section class="introduction">
-            <h2>Challenge Overview</h2>
-            <p>In this challenge, your goal is to exploit a basic SQL injection vulnerability. The application allows you to search for users in the database. Can you retrieve more data than intended?</p>
-        </section>
+<body>
+    <h2>Level 1 - Basic SQL Injection</h2>
+    <p>Welcome to the vulnerable SQLi page!</p>
+    <form method="GET">
+        <label for="username">Enter username:</label>
+        <input type="text" id="username" name="username">
+        <button type="submit">Search</button>
+    </form>
+    <div id="result">
+        <h3>Search Results:</h3>
+        <p>
+            <?php
+            if (isset($_GET['username'])) {
+                // Vulnerable code without input sanitization
+                $username = $_GET['username'];
+                $query = "SELECT * FROM users WHERE username = '$username'";
+                
+                // Dummy data for the sake of this example
+                $dummyData = [
+                    ['username' => 'admin', 'email' => 'admin@example.com'],
+                    ['username' => 'user1', 'email' => 'user1@example.com'],
+                ];
 
-        <section class="challenge">
-            <h2>Your Task</h2>
-            <form action="sqli-level1.html" method="GET">
-                <label for="user">Search for a user:</label>
-                <input type="text" id="user" name="username" placeholder="Enter username...">
-                <button type="submit">Search</button>
-            </form>
-
-            <!-- Display the result -->
-            <div class="result">
-                <h3>Search Results:</h3>
-                <p>
-                    <?php
-                    $username = $_GET['username'];
-                    $query = "SELECT * FROM users WHERE username = '$username'";
-                    // Assume $conn is the connection to the database
-                    $result = mysqli_query($conn, $query);
-
-                    if (mysqli_num_rows($result) > 0) {
-                        while($row = mysqli_fetch_assoc($result)) {
-                            echo "User: " . $row['username'] . " - Email: " . $row['email'] . "<br>";
-                        }
-                    } else {
-                        echo "No results found.";
+                // Simulate a database query
+                $results = [];
+                foreach ($dummyData as $data) {
+                    if ($data['username'] == $username) {
+                        $results[] = $data;
                     }
-                    ?>
-                </p>
-            </div>
-        </section>
+                }
 
-        <section class="hint">
-            <h2>Hint</h2>
-            <p>Try injecting something unusual as the username. What happens when you use `' OR '1'='1`?</p>
-        </section>
-    </main>
-
-    <footer>
-        <p>Happy Hacking! | <a href="challenges.html">Back to Challenges</a></p>
-    </footer>
+                // Display results
+                if (!empty($results)) {
+                    foreach ($results as $row) {
+                        echo "User: " . $row['username'] . " - Email: " . $row['email'] . "<br>";
+                    }
+                } else {
+                    echo "No results found.";
+                }
+            }
+            ?>
+        </p>
+    </div>
 </body>
 </html>
