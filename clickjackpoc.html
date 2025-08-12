@@ -1,79 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Clickjacking PoC Tester</title>
-<style>
-    body { font-family: Arial, sans-serif; background: #f8f9fa; padding: 20px; }
-    iframe { width: 100%; height: 600px; border: 2px solid #000; opacity: 0.7; margin-top: 20px; }
-    .info { background: #fff; padding: 15px; border-radius: 8px; margin-top: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1);}
-    h1 { color: #c00; }
-    .safe { color: green; }
-    .vulnerable { color: red; }
-    input[type="text"] { width: 70%; padding: 10px; font-size: 16px; }
-    button { padding: 10px 20px; font-size: 16px; margin-left: 10px; cursor: pointer; }
-</style>
+  <meta charset="UTF-8">
+  <title>Clickjacking PoC Tester (Enhanced)</title>
+  <style>
+    
+  </style>
 </head>
 <body>
-
-<h1>Clickjacking PoC Tester</h1>
-
-<!-- Input form -->
-<input type="text" id="targetUrl" placeholder="Enter website URL (e.g., https://example.com)">
-<button onclick="testClickjacking()">Test</button>
-
-<div id="result"></div>
+  <h1>Clickjacking PoC Tester</h1>
+  <input id="targetUrl" placeholder="https://example.com">
+  <button onclick="runTest()">Test</button>
+  <div id="result"></div>
 
 <script>
-function testClickjacking() {
-    const target = document.getElementById("targetUrl").value.trim();
-    const resultDiv = document.getElementById("result");
+async function runTest() {
+  const url = document.getElementById('targetUrl').value.trim();
+  const res = document.getElementById('result');
+  res.innerHTML = '';
 
-    if (!target) {
-        alert("Please enter a valid URL.");
-        return;
-    }
+  
+  try {
+    const response = await fetch(url, { method: 'HEAD', mode: 'cors' });
+    const xfo = response.headers.get('X-Frame-Options') || 'None';
+    const csp = response.headers.get('Content-Security-Policy') || 'None';
+    res.innerHTML += `<p> X-Frame-Options: <b>${xfo}</b><br>CSP frame-ancestors: <b>${csp}</b></p>`;
+  } catch(e) {
+    res.innerHTML += `<p>Unable to fetch headers due to CORS—run via server proxy for accurate results.</p>`;
+  }
 
-    // Clear old result
-    resultDiv.innerHTML = "";
+ 
+  const iframe = document.createElement('iframe');
+  iframe.src = url;
+  res.appendChild(iframe);
 
-    // Add iframe
-    const iframe = document.createElement("iframe");
-    iframe.src = target;
-    iframe.onload = function() {
-        resultDiv.innerHTML = `<p class="vulnerable"><b>Vulnerable:</b> The site is loaded inside an iframe, so it may be susceptible to clickjacking.</p>`;
-        showInfo(resultDiv);
-    };
-    iframe.onerror = function() {
-        resultDiv.innerHTML = `<p class="safe"><b>Protected:</b> The site cannot be embedded in an iframe (likely using X-Frame-Options or CSP).</p>`;
-        showInfo(resultDiv);
-    };
+  let fired = false;
+  iframe.onload = () => (!fired && setTimeout(() => { fired = true; res.innerHTML += `<p style="color:red;"><b>Vulnerable:</b> iframe loaded.</p>`; showPoC(); }, 100));
+  iframe.onerror = () => (!fired && (fired = true, res.innerHTML += `<p style="color:green;"><b>Protected:</b> cannot be iframed.</p>`), showPoC());
+  setTimeout(() => (!fired && (fired = true, res.innerHTML += `<p style="color:orange;"><b>Unknown:</b> no definitive result yet.</p>`), showPoC()), 1500);
 
-    resultDiv.appendChild(iframe);
+  function showPoC() {
+    res.innerHTML += `
+      <h3>PoC Snippet</h3>
+      <pre>&lt;iframe src="${url}" style="opacity:0.5;position:absolute;top:0;left:0;width:100%;height:100%;"&gt;&lt;/iframe&gt;
+&lt;button style="position:relative;z-index:999;"&gt;Click Me&lt;/button&gt;</pre>
+      <button onclick="navigator.clipboard.writeText(document.querySelector('pre').innerText)">Copy PoC</button>`;
+    res.innerHTML += `
+      <p>Shareable link: <a href="?url=${encodeURIComponent(url)}">${window.location.origin + window.location.pathname}?url=${encodeURIComponent(url)}</a></p>
+      <div class="info">
+        <h3>Description</h3><p>Clickjacking is a UI redress attack... (OWASP) </p>
+        <h3>Mitigation</h3><ul><li>Content-Security-Policy: frame-ancestors 'none'</li><li>X-Frame-Options: DENY</li></ul>
+      </div>`;
+  }
 }
 
-function showInfo(container) {
-    container.innerHTML += `
-        <div class="info">
-            <h3>Description</h3>
-            <p>Clickjacking is an attack where a malicious site overlays a transparent iframe of the target site, tricking the user into clicking on it.</p>
 
-            <h3>Impact</h3>
-            <ul>
-                <li>Performing unintended actions on behalf of the user</li>
-                <li>CSRF token bypass in some cases</li>
-                <li>Changing sensitive settings or transferring funds without consent</li>
-            </ul>
-
-            <h3>Remediation</h3>
-            <ul>
-                <li>Set <code>X-Frame-Options: DENY</code> or <code>SAMEORIGIN</code></li>
-                <li>Use <code>Content-Security-Policy: frame-ancestors 'none'</code></li>
-            </ul>
-        </div>
-    `;
-}
+window.addEventListener('DOMContentLoaded', () => {
+  const u = new URLSearchParams(location.search).get('url');
+  if (u) {
+    document.getElementById('targetUrl').value = u;
+    runTest();
+  }
+});
 </script>
-
 </body>
 </html>
