@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Clickjacking PoC Tester</title>
+<style>
+    body { font-family: Arial, sans-serif; background: #f8f9fa; padding: 20px; }
+    iframe { width: 100%; height: 600px; border: 2px solid #000; opacity: 0.7; margin-top: 20px; }
+    .info { background: #fff; padding: 15px; border-radius: 8px; margin-top: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1);}
+    h1 { color: #c00; }
+    .safe { color: green; }
+    .vulnerable { color: red; }
+    input[type="text"] { width: 70%; padding: 10px; font-size: 16px; }
+    button { padding: 10px 20px; font-size: 16px; margin-left: 10px; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<h1>Clickjacking PoC Tester</h1>
+
+<!-- Input form -->
+<input type="text" id="targetUrl" placeholder="Enter website URL (e.g., https://example.com)">
+<button onclick="testClickjacking()">Test</button>
+
+<div id="result"></div>
+
+<script>
+function testClickjacking() {
+    const target = document.getElementById("targetUrl").value.trim();
+    const resultDiv = document.getElementById("result");
+
+    if (!target) {
+        alert("Please enter a valid URL.");
+        return;
+    }
+
+    // Clear old result
+    resultDiv.innerHTML = "";
+
+    // Add iframe
+    const iframe = document.createElement("iframe");
+    iframe.src = target;
+    iframe.onload = function() {
+        resultDiv.innerHTML = `<p class="vulnerable"><b>Vulnerable:</b> The site is loaded inside an iframe, so it may be susceptible to clickjacking.</p>`;
+        showInfo(resultDiv);
+    };
+    iframe.onerror = function() {
+        resultDiv.innerHTML = `<p class="safe"><b>Protected:</b> The site cannot be embedded in an iframe (likely using X-Frame-Options or CSP).</p>`;
+        showInfo(resultDiv);
+    };
+
+    resultDiv.appendChild(iframe);
+}
+
+function showInfo(container) {
+    container.innerHTML += `
+        <div class="info">
+            <h3>Description</h3>
+            <p>Clickjacking is an attack where a malicious site overlays a transparent iframe of the target site, tricking the user into clicking on it.</p>
+
+            <h3>Impact</h3>
+            <ul>
+                <li>Performing unintended actions on behalf of the user</li>
+                <li>CSRF token bypass in some cases</li>
+                <li>Changing sensitive settings or transferring funds without consent</li>
+            </ul>
+
+            <h3>Remediation</h3>
+            <ul>
+                <li>Set <code>X-Frame-Options: DENY</code> or <code>SAMEORIGIN</code></li>
+                <li>Use <code>Content-Security-Policy: frame-ancestors 'none'</code></li>
+            </ul>
+        </div>
+    `;
+}
+</script>
+
+</body>
+</html>
