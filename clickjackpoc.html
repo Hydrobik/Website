@@ -274,7 +274,6 @@
     let headerInfo = {};
     let dragData = { dragging: false, offsetX: 0, offsetY: 0 };
 
-    // Helper: sanitize user input for HTML context
     function escapeHTML(str) {
       return str.replace(/[&<>"'`=\/]/g, function(s) {
         return {
@@ -284,7 +283,6 @@
       });
     }
 
-    // Set status message
     function setStatus(msg, isGood = false, show = true) {
       statusMsg.style.display = show ? 'block' : 'none';
       statusMsg.innerHTML = msg;
@@ -292,7 +290,6 @@
       statusMsg.setAttribute('aria-live', 'polite');
     }
 
-    // Fetch headers with CORS fallback via proxy if needed
     async function fetchHeaders(url) {
       try {
         const resp = await fetch(url, { method: 'HEAD', mode: 'cors' });
@@ -302,7 +299,6 @@
         return headers;
       } catch {
         try {
-          // Fallback: use cors-anywhere proxy if direct HEAD fails (demo purposes; you may replace with your own proxy)
           const proxyUrl = 'https://cors-anywhere.herokuapp.com/' + url;
           const resp = await fetch(proxyUrl, { method: 'HEAD' });
           if (!resp.ok) return null;
@@ -315,7 +311,6 @@
       }
     }
 
-    // Compose result description and remediation based on vulnerability
     function updateResultPanels(vulnerable, xfo, csp) {
       if (vulnerable) {
         resultHeader.textContent = 'Vulnerable to Clickjacking';
@@ -340,7 +335,6 @@
       resultPanel.style.display = 'block';
     }
 
-    // Generate standalone PoC HTML demonstrating clickjacking attack with redirect
     function generatePoCHTML(url, lureText, redirectUrl) {
       const safeUrl = escapeHTML(url);
       const safeLureText = escapeHTML(lureText || 'Click me to claim reward');
@@ -384,7 +378,6 @@
   const iframe = document.getElementById('pocIframe');
   lure.addEventListener('click', () => {
     iframe.classList.add('ghost');
-    // Delay redirect slightly for visual effect
     setTimeout(() => {
       window.location.href = "${safeRedirect}";
     }, 700);
@@ -394,7 +387,6 @@
 </html>`;
     }
 
-    // Event handlers for iframe overlay drag and keyboard accessibility
     function initDrag() {
       lure.addEventListener('mousedown', (e) => {
         dragData.dragging = true;
@@ -448,16 +440,13 @@
         }
       });
 
-      // Add click event on main overlay lure to redirect with ghost effect
+      // Click handler for redirect with ghost effect
       lure.addEventListener('click', () => {
         if (!isVulnerable) return;
-        // Make iframe ghost (nearly transparent)
         targetFrame.classList.add('ghost');
-        // Redirect to demonstration phishing URL after slight delay for effect
         setStatus('Redirecting to demo phishing site...', true);
         setTimeout(() => {
-          // Change this URL to your demonstration phishing site or impact URL
-          window.location.href = 'https://example.com/phishing';
+          window.location.href = 'https://iambikash.in/phishing';
         }, 700);
       });
     }
@@ -475,10 +464,8 @@
       btnTest.disabled = true;
       btnCopyLink.disabled = true;
 
-      // Fetch headers
       let headers = await fetchHeaders(url);
       if (!headers) {
-        // If HEAD failed, fallback to GET for same-origin or CORS-enabled sites
         try {
           const resp = await fetch(url, { method: 'GET', mode: 'cors' });
           headers = {};
@@ -491,12 +478,10 @@
       headerInfo.xfo = headers['x-frame-options'] || '';
       headerInfo.csp = headers['content-security-policy'] || '';
 
-      // Attempt to load iframe
       targetFrame.src = '';
       iframeContainer.style.display = 'none';
       frameLoaded = false;
 
-      // Setup a promise to detect iframe loading result
       const frameLoadPromise = new Promise((resolve) => {
         let timeoutId;
 
@@ -518,10 +503,8 @@
           resolve(false);
         };
 
-        // Timeout fallback in 3s
         timeoutId = setTimeout(() => {
           cleanUp();
-          // Sometimes neither onload nor onerror fires reliably; check contentWindow access as fallback
           try {
             const cw = targetFrame.contentWindow;
             resolve(true);
@@ -531,7 +514,6 @@
         }, 3000);
       });
 
-      // Remove sandbox to accurately test framing as per OWASP recommendation
       targetFrame.removeAttribute('sandbox');
 
       targetFrame.src = url;
@@ -558,7 +540,6 @@
       btnCopyLink.disabled = false;
     }
 
-    // Reset iframe and overlay
     function resetFrame() {
       targetFrame.classList.remove('ghost');
       overlay.classList.add('hidden');
@@ -566,7 +547,6 @@
       lure.style.top = '20%';
     }
 
-    // Copy shareable link
     async function copyShareLink() {
       const url = targetUrlInput.value.trim();
       if (!url) {
@@ -582,7 +562,6 @@
       }
     }
 
-    // Show PoC code with redirect to demonstration phishing URL
     function showPoCGenerator() {
       if (!targetUrlInput.value.trim()) {
         setStatus('Enter a valid URL before generating PoC.', false);
@@ -596,7 +575,6 @@
       pocCode.select();
     }
 
-    // Copy PoC HTML textarea content to clipboard
     async function copyPoCHTML() {
       try {
         pocCode.select();
@@ -607,7 +585,6 @@
       }
     }
 
-    // Toggle overlay visibility
     function toggleOverlay() {
       if (overlay.classList.contains('hidden')) {
         overlay.classList.remove('hidden');
@@ -618,12 +595,10 @@
       }
     }
 
-    // Make iframe ghost (transparent)
     function makeGhost() {
       targetFrame.classList.add('ghost');
     }
 
-    // Prefill url from ?url= query on load
     function prefillFromUrl() {
       const params = new URLSearchParams(location.search);
       const urlParam = params.get('url');
@@ -633,7 +608,6 @@
       }
     }
 
-    // Initialize draggable lure and attach events
     function initialize() {
       initDrag();
 
