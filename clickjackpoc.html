@@ -19,36 +19,18 @@
       border-radius: 14px;
       box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
     }
-    h1 {
-      margin-bottom: 18px;
-      font-weight: 700;
-      font-size: 1.8em;
-      color: #42d9f5;
-      user-select: none;
-    }
+    h1 { margin-bottom: 18px; font-weight: 700; font-size: 1.8em; color: #42d9f5; }
     label { display: block; margin-bottom: 8px; font-weight: 600; }
     input[type="url"] {
-      width: 100%;
-      padding: 12px 14px;
-      font-size: 1.1em;
-      border-radius: 8px;
-      border: none;
-      background: #1c2536;
-      color: #d2e6ff;
-      box-sizing: border-box;
-      margin-bottom: 15px;
+      width: 100%; padding: 12px 14px; font-size: 1.1em;
+      border-radius: 8px; border: none; background: #1c2536;
+      color: #d2e6ff; box-sizing: border-box; margin-bottom: 15px;
     }
     input[type="url"]:focus { outline: 3px solid #3fb1ff; }
     button {
-      background-color: #3fb1ff;
-      border: none;
-      border-radius: 8px;
-      padding: 11px 20px;
-      font-weight: 600;
-      color: #fff;
-      font-size: 1em;
-      cursor: pointer;
-      margin-right: 8px;
+      background-color: #3fb1ff; border: none; border-radius: 8px;
+      padding: 11px 20px; font-weight: 600; color: #fff; font-size: 1em;
+      cursor: pointer; margin-right: 8px;
     }
     button:disabled { background-color: #40657f; cursor: not-allowed; }
     button:hover:not(:disabled) { background-color: #2c82d3; }
@@ -83,10 +65,8 @@
       border: 1.6px solid #317a2b; border-radius: 10px;
       font-family: monospace; resize: vertical;
     }
-    .panel {
-      background-color: #12202f; border-radius: 12px;
-      padding: 12px 18px; margin-bottom: 12px; line-height: 1.35;
-    }
+    .panel { background-color: #12202f; border-radius: 12px;
+      padding: 12px 18px; margin-bottom: 12px; line-height: 1.35; }
     .desc-head { font-weight: 700; font-size: 1.2em; color: #49ddff; }
     .impact { margin-top: 10px; color: #f8d391; font-weight: 700; }
     .remediation { margin-top: 8px; color: #61de93; font-weight: 700; }
@@ -208,7 +188,7 @@ document.getElementById('pocLure').addEventListener('click',()=>{
  document.getElementById('pocIframe').classList.add('ghost');
  setTimeout(()=>{window.location.href='${escapeHTML(redirectUrl)}';},700);
 });
-</script>
+<\/script>
 </body>
 </html>`;
   }
@@ -239,7 +219,7 @@ document.getElementById('pocLure').addEventListener('click',()=>{
     updateResult(isVulnerable, headerInfo['x-frame-options']||'', headerInfo['content-security-policy']||'');
   }
 
-  // Overlay lure click behaviour FIXED
+  // Overlay click => ghost + redirect
   lure.addEventListener('click', () => {
     if (!isVulnerable) return;
     targetFrame.classList.add('ghost');
@@ -251,7 +231,8 @@ document.getElementById('pocLure').addEventListener('click',()=>{
   lure.addEventListener('mousedown', e=>{
     e.preventDefault();
     const startX = e.clientX, startY = e.clientY;
-    const startLeft = parseInt(lure.style.left||'18%'), startTop = parseInt(lure.style.top||'20%');
+    const startLeft = lure.offsetLeft;
+    const startTop = lure.offsetTop;
     function onMove(ev){
       lure.style.left = (startLeft + (ev.clientX - startX)) + 'px';
       lure.style.top = (startTop + (ev.clientY - startY)) + 'px';
@@ -279,10 +260,11 @@ document.getElementById('pocLure').addEventListener('click',()=>{
   };
   $('btnCopyPoC').onclick=async()=>{ try{ await navigator.clipboard.writeText(pocCode.value); setStatus("PoC copied",true);}catch{} };
 
-  // Auto prefill
+  // Auto prefill from ?url=
   const qurl = new URLSearchParams(location.search).get('url');
-  if(qurl){ targetUrlInput.value = qurl; testClickjacking(qurl);}
-})();
+  if(qurl){ targetUrlInput.value = qurl; testClickjacking(qurl); }
+
+})(); // <-- Properly closed IIFE
 </script>
 </body>
 </html>
